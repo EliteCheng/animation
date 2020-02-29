@@ -1,0 +1,73 @@
+@base-rate: 0.26;
+
+@heart-wrapper-height: 120px * @base-rate;
+@heart-wrapper-width: @heart-wrapper-height * 1.15;
+@heart-half-width: 60px * @base-rate;
+@heart-half-height: @heart-half-width * 1.6;
+@heart-half-color: rgba(255, 131, 131, 1);
+
+@click-heart-div-bottom: 30px;
+@click-heart-div-right: 30px;
+
+body {
+    margin: 0;
+    background: black;
+}
+
+.heart-wrapper {
+    width: @heart-wrapper-width;
+    height: @heart-wrapper-height;
+    position: absolute;
+    bottom: @click-heart-div-bottom;
+    right: @click-heart-div-right;
+    background: transparent;
+    z-index: 0;
+    animation: run 3s linear forwards;
+}
+
+.click-heart-div {
+    height: @heart-wrapper-height;
+    width: @heart-wrapper-width;
+    position: fixed;
+    z-index: 1;
+    bottom: @click-heart-div-bottom;
+    right: @click-heart-div-right;
+    background: transparent;
+    cursor: pointer;
+}
+
+.heart-right,
+.heart-left {
+    position: absolute;
+    top: 8px;
+    border-radius: 50% 50% 0 0;
+    height: @heart-half-height;
+    width: @heart-half-width;
+    background: @heart-half-color;
+    filter: drop-shadow(0px 0px 5px*@base-rate @heart-half-color);
+}
+
+.heart-left {
+    left: 25px * @base-rate;
+    transform: rotate(-45deg);
+}
+
+.heart-right {
+    left: 52px * @base-rate;
+    transform: rotate(46deg);
+}
+
+@keyframes run {
+    0% {
+        opacity: 0;
+        bottom: @click-heart-div-bottom;
+    }
+    50% {
+        opacity: 1;
+        bottom: @click-heart-div-bottom + 300px*@base-rate;
+    }
+    100% {
+        opacity: 0;
+        bottom: @click-heart-div-bottom + 800px*@base-rate;
+    }
+}
