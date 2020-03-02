@@ -1,9 +1,13 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const {
+    mainPath,
+    htmlPath,
+} = require('../svg-animation/config')
 
 module.exports = {
     entry: {
-        main: [path.join(__dirname, '../css3-animation/main.js')],
+        main: [mainPath],
     },
     output: {
         filename: '[name].min.js',
@@ -39,7 +43,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, '../css3-animation/heart-animation.html')
+            template: htmlPath
         })
     ]
 }
